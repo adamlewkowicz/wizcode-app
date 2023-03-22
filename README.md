@@ -10,8 +10,9 @@
 
 ## Features
 
-- Optimized performance using `useDeferredValue` hook, `useMemo` and `memo` functions for memoization.
-- Highligting search queries.
-- TypeScript based codebase.
-- Contacts sorted alphabetically by last name by default.
-- Additional support added for invalid images (429 error - too many requests).
+- Optimized performance using `useMemo` and `memo` functions for memoization.
+- TypeScript-based codebase.
+- Lazy loading for images (better network performance).
+- **Additional**
+  - adding albums to favorite
+  - highlighting search queries
