@@ -1,6 +1,11 @@
-import { selector } from 'recoil';
-import { albumsState } from './useAlbums';
-import { queryState } from './useSearchQuery';
+import { atom, selector } from 'recoil';
+import { AlbumNormalized } from '../hooks/useAlbums';
+import { queryState } from './query';
+
+export const albumsState = atom<AlbumNormalized[]>({
+  key: 'albumsState',
+  default: [],
+});
 
 export const filteredAlbumsState = selector({
   key: 'filteredAlbumsState',

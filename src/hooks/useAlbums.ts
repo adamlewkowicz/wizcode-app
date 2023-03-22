@@ -1,11 +1,7 @@
 import { atom, useRecoilState } from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
 import { getAlbums } from '../network/getAlbums';
-
-export const albumsState = atom<AlbumNormalized[]>({
-  key: 'albumsState',
-  default: [],
-});
+import { albumsState } from '../atoms/albums';
 
 export type AlbumNormalized = {
   id: string;

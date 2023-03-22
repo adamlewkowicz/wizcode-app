@@ -1,19 +1,13 @@
 import { Box, Text } from '@chakra-ui/react';
 import { Spinner } from '@chakra-ui/react';
 import { InputSearch } from './InputSearch';
-import { AlbumRow } from './AlbumRow';
-import { useSearchQuery } from '../hooks/useSearchQuery';
 import { useAlbums } from '../hooks/useAlbums';
-import { filteredAlbumsState } from '../hooks/useFilteredAlbums';
-import { useRecoilValue } from 'recoil';
+import { AlbumsList } from './AlbumsList';
 
 interface AlbumsViewProps {}
 
 export const AlbumsView = (props: AlbumsViewProps) => {
   const { isLoading, albumUpdate, errorMessage } = useAlbums();
-  const { query, setQuery, deferredQuery, isSearching } = useSearchQuery();
-
-  const filteredAlbums = useRecoilValue(filteredAlbumsState);
 
   if (errorMessage != null) {
     return (
@@ -26,22 +20,11 @@ export const AlbumsView = (props: AlbumsViewProps) => {
   return (
     <Box margin="48px auto" padding="8px" maxWidth="800px">
       <Text fontSize="3xl">Top 100 albums</Text>
-      <InputSearch
-        value={query}
-        onTextChange={setQuery}
-        isSearching={isSearching}
-      />
+      <InputSearch />
       {isLoading ? (
         <Spinner margin="auto" size="md" />
       ) : (
-        filteredAlbums.map((album) => (
-          <AlbumRow
-            query={deferredQuery}
-            key={album.id}
-            onAlbumUpdate={albumUpdate}
-            album={album}
-          />
-        ))
+        <AlbumsList onAlbumUpdate={albumUpdate} />
       )}
     </Box>
   );

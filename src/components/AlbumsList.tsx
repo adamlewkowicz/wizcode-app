@@ -1,25 +1,28 @@
 import { memo } from 'react';
-import styled from '@emotion/styled';
 import { AlbumNormalized } from '../hooks/useAlbums';
+import { useRecoilValue } from 'recoil';
+import { filteredAlbumsState } from '../atoms/albums';
+import { queryState } from '../atoms/query';
+import { AlbumRow } from './AlbumRow';
 
 interface AlbumsListProps {
-  isSearching: boolean;
+  onAlbumUpdate: (albumId: string, album: Partial<AlbumNormalized>) => void;
 }
 
-export const AlbumsList = ({ isSearching }: AlbumsListProps) => {
+export const AlbumsList = memo(({ onAlbumUpdate }: AlbumsListProps) => {
+  const query = useRecoilValue(queryState);
+  const filteredAlbums = useRecoilValue(filteredAlbumsState);
+
   return (
-    <List
-      style={{
-        opacity: isSearching ? '0.5' : '1',
-      }}
-    >
-      {/* {Render albums} */}
-    </List>
+    <ul>
+      {filteredAlbums.map((album) => (
+        <AlbumRow
+          query={query}
+          key={album.id}
+          onAlbumUpdate={onAlbumUpdate}
+          album={album}
+        />
+      ))}
+    </ul>
   );
-};
-
-const List = styled.ul`
-  transition: opacity 0.2s ease;
-`;
-
-export const AlbumsListMemo = memo(AlbumsList);
+});
