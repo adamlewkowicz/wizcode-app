@@ -1,7 +1,5 @@
 # Wizcode App
 
-![Main page](/hero.png)
-
 ## Getting started
 
 1. `npm install`.
@@ -18,3 +16,7 @@
 - **Additional**
   - adding albums to favorite
   - highlighting search queries
+
+## Preview
+
+![Main page](/hero.png | width=100)
