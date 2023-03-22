@@ -16,6 +16,9 @@
 - **Additional**
   - adding albums to favorite
   - highlighting search queries
+  
+   
+ [Read more about additional featues](/FEATURE.md)
 
 ## Preview
 
