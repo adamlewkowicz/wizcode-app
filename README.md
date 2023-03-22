@@ -19,4 +19,4 @@
 
 ## Preview
 
-![Main page](/hero.png | width=100)
+<img src="https://raw.githubusercontent.com/adamlewkowicz/wizcode-app/main/hero.png" width="auto" height="100%" />
