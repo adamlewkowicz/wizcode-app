@@ -50,7 +50,7 @@ const ListItem = styled.li<{ isFavorite: boolean }>`
   padding: 24px 16px;
   border-bottom: 1px solid #edf2f7;
   gap: 36px;
-  /* background-color: ${(props) => (props.isFavorite ? '#ebf8ff' : '#fff')}; */
+  background-color: ${(props) => (props.isFavorite ? '#fdfdf5' : '#fff')};
 `;
 
 const FavoriteButton = styled(IconButton)`

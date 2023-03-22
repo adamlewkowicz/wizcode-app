@@ -23,7 +23,7 @@ export const InputSearch = ({
     backgroundColor="#fff"
   >
     <Input
-      placeholder="Search album by title or author"
+      placeholder="Search album by title or artist"
       value={value}
       onChange={(event) => onTextChange(event.target.value)}
       backgroundColor="whiteAlpha.100"
