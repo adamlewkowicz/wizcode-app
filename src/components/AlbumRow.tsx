@@ -58,6 +58,8 @@ const ListItem = styled.li<{ isFavorite: boolean }>`
   }
 `;
 
-const Title = styled.span`
+const Title = styled.p`
   flex: 1;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
 `;

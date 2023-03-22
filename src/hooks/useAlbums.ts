@@ -1,4 +1,4 @@
-import { atom, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
 import { getAlbums } from '../network/getAlbums';
 import { albumsState } from '../atoms/albums';
@@ -21,7 +21,7 @@ export const useAlbums = () => {
         const albumsNormalized =
           data.feed.entry?.map<AlbumNormalized>((entry) => ({
             id: entry.id.label,
-            title: entry.title.label,
+            title: `${entry['im:name'].label} \n${entry['im:artist'].label}`,
             imgUrl: entry['im:image'][0].label ?? IMG_PLACEHOLDER,
             isFavorite: false,
           })) ?? [];
