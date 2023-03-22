@@ -1,5 +1,7 @@
 # Wizcode App
 
+![Main page](/hero.png)
+
 ## Getting started
 
 1. `npm install`.
