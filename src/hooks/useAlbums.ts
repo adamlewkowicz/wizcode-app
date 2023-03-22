@@ -17,20 +17,23 @@ export type AlbumNormalized = {
 export const useAlbums = () => {
   const [albums, setAlbums] = useRecoilState(albumsState);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getAlbums().then((data) => {
-      const albumsNormalized =
-        data.feed.entry?.map<AlbumNormalized>((entry) => ({
-          id: entry.id.label,
-          title: entry.title.label,
-          imgUrl: entry['im:image'][0].label ?? IMG_PLACEHOLDER,
-          isFavorite: false,
-        })) ?? [];
+    getAlbums()
+      .then((data) => {
+        const albumsNormalized =
+          data.feed.entry?.map<AlbumNormalized>((entry) => ({
+            id: entry.id.label,
+            title: entry.title.label,
+            imgUrl: entry['im:image'][0].label ?? IMG_PLACEHOLDER,
+            isFavorite: false,
+          })) ?? [];
 
-      setAlbums(albumsNormalized);
-    });
+        setAlbums(albumsNormalized);
+      })
+      .catch((error) => setErrorMessage(error.message ?? 'Unknown error'))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const albumUpdate = useCallback(

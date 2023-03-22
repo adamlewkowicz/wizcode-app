@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import styled from '@emotion/styled';
-import { Highlight } from '@chakra-ui/react';
+import { Highlight, IconButton } from '@chakra-ui/react';
 import { AlbumNormalized } from '../hooks/useAlbums';
+import { StarIcon } from '@chakra-ui/icons';
 
 interface AlbumRowProps {
   album: AlbumNormalized;
@@ -29,13 +30,13 @@ export const AlbumRow = memo(
             album.title
           )}
         </div>
-        {/* <div>{album.releaseDate}</div> */}
-        <Checkbox
-          type="checkbox"
-          checked={album.isFavorite}
-          onChange={(event) => {
-            onAlbumUpdate(album.id, { isFavorite: event.target.checked });
+        <FavoriteButton
+          aria-label="Mark album as favorite"
+          colorScheme={album.isFavorite ? 'yellow' : undefined}
+          onClick={() => {
+            onAlbumUpdate(album.id, { isFavorite: !album.isFavorite });
           }}
+          icon={<StarIcon />}
         />
       </ListItem>
     );
@@ -49,12 +50,9 @@ const ListItem = styled.li<{ isFavorite: boolean }>`
   padding: 24px 16px;
   border-bottom: 1px solid #edf2f7;
   gap: 36px;
-  background-color: ${(props) => (props.isFavorite ? '#ebf8ff' : '#fff')};
+  /* background-color: ${(props) => (props.isFavorite ? '#ebf8ff' : '#fff')}; */
 `;
 
-const Checkbox = styled.input`
-  width: 16px;
-  height: 16px;
+const FavoriteButton = styled(IconButton)`
   margin-left: auto;
-  accent-color: #3182ce;
 `;
