@@ -21,7 +21,7 @@ export const AlbumRow = memo(
           height="55"
           width="55"
         />
-        <div>
+        <Title>
           {query.length > 0 ? (
             <Highlight query={query} styles={{ bg: 'orange.100' }}>
               {album.title}
@@ -29,8 +29,8 @@ export const AlbumRow = memo(
           ) : (
             album.title
           )}
-        </div>
-        <FavoriteButton
+        </Title>
+        <IconButton
           aria-label="Mark album as favorite"
           colorScheme={album.isFavorite ? 'yellow' : undefined}
           onClick={() => {
@@ -46,13 +46,18 @@ export const AlbumRow = memo(
 const ListItem = styled.li<{ isFavorite: boolean }>`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 24px 16px;
   border-bottom: 1px solid #edf2f7;
   gap: 36px;
   background-color: ${(props) => (props.isFavorite ? '#fdfdf5' : '#fff')};
+  @media (max-width: 420px) {
+    gap: 12px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
-const FavoriteButton = styled(IconButton)`
-  margin-left: auto;
+const Title = styled.span`
+  flex: 1;
 `;

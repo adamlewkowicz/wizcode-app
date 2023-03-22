@@ -24,7 +24,7 @@ export const AlbumsView = (props: AlbumsViewProps) => {
   }
 
   return (
-    <Box margin="48px auto" maxWidth="800px">
+    <Box margin="48px auto" padding="8px" maxWidth="800px">
       <Text fontSize="3xl">Top 100 albums</Text>
       <InputSearch
         value={query}
